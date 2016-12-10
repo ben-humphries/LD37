@@ -3,34 +3,52 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
+	public RoomController controller;
+
+	private Vector2 currentPosition;
+
 	// Use this for initialization
 	void Start () {
-		
+		currentPosition = new Vector2 (0, 0);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//If left mouse button is pressed
-		if (Input.GetMouseButtonDown (0)) {
+		float deltaX = 0;
+		float deltaY = 0;
 
-			/*MOVEMENT*/
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			if(currentPosition.y + 1 < 10){
+				deltaY += 1 * 0.25f;
+				currentPosition.y++;
+			}
+		}
+		else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			if(currentPosition.y - 1 >= 0){
+				deltaY -= 1 * 0.25f;
+				currentPosition.y--;
+			}
+		}
+		else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+			if(currentPosition.x + 1 < 10){
+				deltaX += 1 * 0.25f;
+				currentPosition.x++;
+			}
+		}
+		else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+			if(currentPosition.x - 1 >= 0){
+				deltaX -= 1 * 0.25f;
+				currentPosition.x--;
+			}
+		}
 
-			//Get mouse position and convert it to world coordinates.
-			Vector2 mouseClick = Input.mousePosition;
-			mouseClick = Camera.main.ScreenToWorldPoint(mouseClick);
+		transform.position = new Vector2 (transform.position.x + deltaX, transform.position.y + deltaY);
 
-			//If coordinates are negative, subtract one as when casted to an int, a negative number will round towards zero.
-			if(mouseClick.x < 0)
-				mouseClick.x --;
-			if(mouseClick.y < 0)
-				mouseClick.y --;
-
-			//Round to nearest tile value and update player position.
-			Vector2 mousePosition = new Vector2 ((int)mouseClick.x + 0.5f, (int)mouseClick.y + 0.5f);
-			transform.position = mousePosition;
-
+	}
+	void OnTriggerEnter2D(Collider2D c){
+		if (c.gameObject.tag.Equals ("Exit")) {
+			Debug.Log ("here");
 		}
 	}
-
 }
