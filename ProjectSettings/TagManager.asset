@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Exit
+  - Key
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -41,6 +43,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Pickups
+    uniqueID: 2460667019
     locked: 0
   - name: Player
     uniqueID: 1083310547
