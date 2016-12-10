@@ -19,11 +19,15 @@ public class RoomController : MonoBehaviour {
 	private GameObject[] tilePositions;
 	private GameObject[] pickupPositions;
 
+	private GameObject[] tempTilePositions;
+
 	private bool keyPickedUp = false;
-	private bool exitReached = false;
+
 
 	// Use this for initialization
 	void Start () {
+
+		player = (GameObject)Instantiate (playerObject, currentPosition * 0.25f, Quaternion.identity);
 
 		loadLevel (levelNumber);
 
@@ -31,7 +35,8 @@ public class RoomController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+
 		float deltaX = 0;
 		float deltaY = 0;
 		
@@ -71,15 +76,14 @@ public class RoomController : MonoBehaviour {
 					if (tilePositions [i].tag.Equals ("Door")) {
 						Vector2 tilePosition = tilePositions [i].transform.position;
 					
-						Destroy (tilePositions [i]);
 						tilePositions [i] = (GameObject)Instantiate (tiles [0], tilePosition, Quaternion.identity);
 					}
 				}
 			}
-			if (!exitReached && player.GetComponent<PlayerController> ().exitReached) {
-				exitReached = true;
-			
-				this.loadLevel (2);
+			if (player.GetComponent<PlayerController> ().exitReached) {
+				levelNumber++;
+
+				this.loadLevel (levelNumber);
 			}
 		
 		
@@ -97,15 +101,38 @@ public class RoomController : MonoBehaviour {
 		this.pickups = levelChooser.levels [levelNumber - 1].pickups;
 
 		this.currentPosition = levelChooser.levels [levelNumber - 1].startingPosition;
+
+		if(player != null)
+			player.transform.position = currentPosition * 0.25f;
+
+		if (tilePositions != null) {
+			foreach (GameObject g in tilePositions) {
+				if (g != null)
+					Destroy (g);
+			}
+		}
+		if (pickupPositions != null) {
+			foreach (GameObject g in pickupPositions) {
+				if (g != null)
+					Destroy (g);
+			}
+		}
 		
 		tilePositions = new GameObject[tileMap.Length];
 		pickupPositions = new GameObject[pickupMap.Length];
-		
+
+		tempTilePositions = new GameObject[tileMap.Length];
+
 		BoxCollider2D collider = tiles[0].GetComponent<BoxCollider2D> ();
-		
+
+
 		for(int i = 0; i < tileMap.Length; i++){
-			
+
 			tilePositions[i] = (GameObject)Instantiate (tiles[tileMap[i]],
+			                                            new Vector2( (i % 10) * collider.size.x, (10-1) * collider.size.y -((i -(i % 10))/10) * collider.size.y),
+			                                            Quaternion.identity);
+
+			tempTilePositions[i] = (GameObject)Instantiate (levelChooser.levels[0].tiles[0],
 			                                            new Vector2( (i % 10) * collider.size.x, (10-1) * collider.size.y -((i -(i % 10))/10) * collider.size.y),
 			                                            Quaternion.identity);
 			tilePositions[i].transform.parent = transform;
@@ -113,14 +140,38 @@ public class RoomController : MonoBehaviour {
 		}
 		for (int i = 0; i < pickupMap.Length; i++) {
 			if(pickupMap[i] != -1){
+					
 				pickupPositions[i] = (GameObject)Instantiate (pickups[pickupMap[i]],
 				                                              new Vector2( (i % 10) * collider.size.x, (10-1) * collider.size.y -((i -(i % 10))/10) * collider.size.y),
 				                                              Quaternion.identity);
 				pickupPositions[i].transform.parent = transform;
 			}
 		}
+		StartCoroutine ("Fade");
 		
-		
-		player = (GameObject)Instantiate (playerObject, currentPosition * 0.25f, Quaternion.identity);
+
+	}
+	IEnumerator Fade(){
+		for (float f = 0f; f <= 1f; f += 0.01f) {
+			for(int i = 0; i < tilePositions.Length; i++){
+				if(tilePositions[i] != null)
+					tilePositions[i].GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f, f);
+			}
+			for(int i = 0; i < pickupPositions.Length; i++){
+				if(pickupPositions[i] != null)
+					pickupPositions[i].GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f, f);
+			}
+
+			player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, f);
+			yield return null;
+		}
+		DestroyTempTiles ();
+	}
+	private void DestroyTempTiles(){
+		if(tempTilePositions != null){
+			foreach (GameObject t in tempTilePositions) {
+				Destroy (t);
+			}
+		}
 	}
 }

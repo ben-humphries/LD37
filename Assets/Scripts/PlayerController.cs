@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		exitReached = false;
 
 		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 				renderer.sprite = playerBack;
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour {
 		if (c.gameObject.tag.Equals ("Exit")) {
 			Debug.Log ("Reached Exit");
 			exitReached = true;
-			Destroy (gameObject);
 		} else if (c.gameObject.tag.Equals ("Key")) {
 			Debug.Log ("picked up key");
 			keyPickedUp = true;
