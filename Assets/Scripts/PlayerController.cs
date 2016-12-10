@@ -9,7 +9,11 @@ public class PlayerController : MonoBehaviour {
 	public Sprite playerBack;
 
 	private SpriteRenderer renderer;
-	
+
+	[HideInInspector]
+	public bool keyPickedUp = false;
+	[HideInInspector]
+	public bool exitReached = false;
 
 	// Use this for initialization
 	void Start () {
@@ -45,9 +49,12 @@ public class PlayerController : MonoBehaviour {
 	}
 	void OnTriggerEnter2D(Collider2D c){
 		if (c.gameObject.tag.Equals ("Exit")) {
-			Debug.Log ("here");
+			Debug.Log ("Reached Exit");
+			exitReached = true;
+			Destroy (gameObject);
 		} else if (c.gameObject.tag.Equals ("Key")) {
 			Debug.Log ("picked up key");
+			keyPickedUp = true;
 			Destroy (c.gameObject);
 		}
 	}

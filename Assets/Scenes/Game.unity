@@ -171,6 +171,42 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1 &842588323 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 173392, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
+  m_PrefabInternal: {fileID: 1632355096}
+--- !u!114 &842588326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 842588323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c194d4d4d7bec647a8f9b88851ca59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levels:
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 109272, guid: 811d0f9eeeb9a524a9d4897b34b45d01, type: 2}
+    - {fileID: 100478, guid: 938a2474051df5b44b76c856e9f33183, type: 2}
+    - {fileID: 142660, guid: 97fca000c3cda144985febe2c0ee3e54, type: 2}
+    pickups:
+    - {fileID: 169310, guid: 73392f2edccd75e40ab9007f9600ff2b, type: 2}
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 109272, guid: 811d0f9eeeb9a524a9d4897b34b45d01, type: 2}
+    - {fileID: 100478, guid: 938a2474051df5b44b76c856e9f33183, type: 2}
+    - {fileID: 142660, guid: 97fca000c3cda144985febe2c0ee3e54, type: 2}
+    pickups:
+    - {fileID: 169310, guid: 73392f2edccd75e40ab9007f9600ff2b, type: 2}
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
 --- !u!1001 &1632355096
 Prefab:
   m_ObjectHideFlags: 0
@@ -178,6 +214,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11425540, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
+      propertyPath: tiles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 400548, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -214,6 +254,14 @@ Prefab:
       propertyPath: playerObject
       value: 
       objectReference: {fileID: 199826, guid: 2c280206fa63475409febb6551f4a30c, type: 2}
+    - target: {fileID: 11425540, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
+      propertyPath: tiles.Array.data[3]
+      value: 
+      objectReference: {fileID: 142660, guid: 97fca000c3cda144985febe2c0ee3e54, type: 2}
+    - target: {fileID: 11425540, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
+      propertyPath: levelNumber
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
   m_IsPrefabParent: 0
