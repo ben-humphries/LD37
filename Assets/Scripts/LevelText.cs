@@ -12,9 +12,10 @@ public class LevelText : MonoBehaviour {
 
 	private string[] levelTexts = new string[]
 	{
-		"Where am I? Why is there a chair over there?",
-		"What is this? I must be trapped in a simulation! Is that an exit over there?",
-		"Whoa... Is this jungle really just a simulation? Looks like the door's locked..."
+		"You are in an empty room with only a chair...",
+		"You are in a simulation. You see what seems to be an exit...",
+		"This simulation is intricate... the jungle looks so real... You see a key...",
+		"You are in a field with two shrines to dead dogs in the corners... Which path leads out?"
 	};
 
 	void Start () {

@@ -93,7 +93,7 @@ public class RoomController : MonoBehaviour {
 	public void loadLevel(int levelNumber){
 
 		Levels levelChooser = GetComponent<Levels> ();
-		
+
 		this.tileMap = levelChooser.levels [levelNumber - 1].tileMap;
 		this.pickupMap = levelChooser.levels [levelNumber - 1].pickupMap;
 		
@@ -124,7 +124,6 @@ public class RoomController : MonoBehaviour {
 		tempTilePositions = new GameObject[tileMap.Length];
 
 		BoxCollider2D collider = tiles[0].GetComponent<BoxCollider2D> ();
-
 
 		for(int i = 0; i < tileMap.Length; i++){
 
@@ -162,7 +161,7 @@ public class RoomController : MonoBehaviour {
 					pickupPositions[i].GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f, f);
 			}
 
-			player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, f);
+			//player.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, f);
 			yield return null;
 		}
 		DestroyTempTiles ();

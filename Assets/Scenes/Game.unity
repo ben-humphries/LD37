@@ -216,10 +216,20 @@ MonoBehaviour:
   - tiles:
     - {fileID: 182696, guid: 79247407c0729e54385a60e5aadc0ca4, type: 2}
     - {fileID: 186392, guid: c5ca592b9ed55734ab49e9496125a207, type: 2}
-    - {fileID: 142660, guid: 97fca000c3cda144985febe2c0ee3e54, type: 2}
-    - {fileID: 100478, guid: 938a2474051df5b44b76c856e9f33183, type: 2}
+    - {fileID: 104156, guid: 16dc17f7783189743ae1b73f0589f68b, type: 2}
+    - {fileID: 147916, guid: 78ab7bae22f19d741bb945940cd3f4e6, type: 2}
     pickups:
     - {fileID: 169310, guid: 73392f2edccd75e40ab9007f9600ff2b, type: 2}
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 182696, guid: 79247407c0729e54385a60e5aadc0ca4, type: 2}
+    - {fileID: 186392, guid: c5ca592b9ed55734ab49e9496125a207, type: 2}
+    - {fileID: 104156, guid: 16dc17f7783189743ae1b73f0589f68b, type: 2}
+    - {fileID: 147916, guid: 78ab7bae22f19d741bb945940cd3f4e6, type: 2}
+    pickups:
+    - {fileID: 118678, guid: 87ff956988af4f54aa77e988409565bf, type: 2}
     tileMap: 
     pickupMap: 
     startingPosition: {x: 0, y: 0}
