@@ -25,6 +25,9 @@ public class RoomController : MonoBehaviour {
 
 	private float lastMove;
 
+	[HideInInspector]
+	public int conformityPoints;
+
 	// Use this for initialization
 	void Start () {
 
@@ -32,6 +35,7 @@ public class RoomController : MonoBehaviour {
 		lastMove = Time.time;
 		loadLevel (levelNumber);
 
+		conformityPoints = 0;
 	}
 	
 	// Update is called once per frame
@@ -85,9 +89,66 @@ public class RoomController : MonoBehaviour {
 			}
 			if (player.GetComponent<PlayerController> ().exitReached) {
 				Debug.Log (tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))]);
-				levelNumber = tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].GetComponent<Exit>().levelNumber;
 
-				this.loadLevel (levelNumber);
+				int exitNumber = tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].GetComponent<Exit>().levelNumber;
+
+
+				if(levelNumber == 7){
+					if(exitNumber == 10){
+						conformityPoints++;
+					}else if(exitNumber == 8 || exitNumber == 9){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 10){
+					if(exitNumber == 13){
+						conformityPoints++;
+					}
+					else if(exitNumber == 11){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 11){
+					if(exitNumber == 12){
+						conformityPoints++;
+					}else if(exitNumber == 14){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 12){
+					if(currentPosition.x == 6){
+						conformityPoints++;
+					}else if(currentPosition.x == 1){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 13){
+					if(exitNumber == 14){
+						conformityPoints++;
+					}else if(exitNumber == 12){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 14){
+					if(currentPosition.x == 4){
+						conformityPoints++;
+					}else if(currentPosition.x == 1){
+						conformityPoints--;
+					}
+				}else if(levelNumber == 17){
+					if(exitNumber == 18){
+						conformityPoints++;
+					}else if(exitNumber == 19){
+						conformityPoints--;
+					}
+				}
+				
+				levelNumber = exitNumber;
+
+				Debug.Log (conformityPoints);
+
+				if(levelNumber != 18 && levelNumber != 19){
+					this.loadLevel (levelNumber);
+				}
+				else{
+					PlayerPrefs.SetInt ("conformityPoints", conformityPoints);
+					Application.LoadLevel ("EndCinematic");
+				}
 			}
 		
 		

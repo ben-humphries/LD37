@@ -23,7 +23,12 @@ public class LevelText : MonoBehaviour {
 		"You see a street sign with the number 3 on it... It seems familiar...",
 		"This place is weird... It's very vibrant...",
 		"...",
-		"You see two doors with two signs. Who are Brad and John?"
+		"You see two doors with two signs. Who are Brad and John?",
+		"There are lifeless versions of you over there... They seem so real...",
+		"There are two cages... One with a dog, one a cat. It looks like whichever door you go through will kill its animal...",
+		"Maybe the answer was the start all along...",
+		"Maybe the answer was the start all along...",
+		"A sign on the wall reads, \"Go to the exit to leave the simulation. Congratulations.\""
 	};
 
 	void Start () {
@@ -38,7 +43,8 @@ public class LevelText : MonoBehaviour {
 	void Update () {
 		if (levelNumber != roomController.levelNumber) {
 			levelNumber = roomController.levelNumber;
-			text.text = levelTexts[levelNumber - 1];
+			if(levelNumber <= 17)
+				text.text = levelTexts[levelNumber - 1];
 		}
 	}
 }

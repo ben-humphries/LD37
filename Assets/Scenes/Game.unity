@@ -307,6 +307,47 @@ MonoBehaviour:
     tileMap: 
     pickupMap: 
     startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 173190, guid: 63840f98937e0cf4db3b3641f95dcc5e, type: 2}
+    - {fileID: 193424, guid: 45d9ac308cbcb6946adc490b05043ea1, type: 2}
+    - {fileID: 104316, guid: ce3f0b54ae3cea94f96a4b38d9abbffd, type: 2}
+    - {fileID: 169644, guid: a9e2b0a11aac9504697d4573508a7ea8, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 182696, guid: 79247407c0729e54385a60e5aadc0ca4, type: 2}
+    - {fileID: 144732, guid: 3b49d638788ef214689543b4816f73ea, type: 2}
+    - {fileID: 101674, guid: a224abe5f88f9b2488057dfb6443f7a3, type: 2}
+    - {fileID: 185790, guid: 2fae0a56995020c459f30b5ffb387187, type: 2}
+    - {fileID: 154174, guid: 0b230a3f5d89d17469a1b79727f78999, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 155622, guid: 6ab613e93df1faf45ae7405c72a56baa, type: 2}
+    - {fileID: 131990, guid: 2650c53d1e732f94f8365608de63a505, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 155622, guid: 6ab613e93df1faf45ae7405c72a56baa, type: 2}
+    - {fileID: 131990, guid: 2650c53d1e732f94f8365608de63a505, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 117036, guid: 6bf188414287eb946b6cb8fdbb476996, type: 2}
+    - {fileID: 140210, guid: 76ae7e0960fc8de448c6b2f83bb12b3c, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
 --- !u!1 &1163442366
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +560,7 @@ Prefab:
       objectReference: {fileID: 142660, guid: 97fca000c3cda144985febe2c0ee3e54, type: 2}
     - target: {fileID: 11425540, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
       propertyPath: levelNumber
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e9fdcc4f6325e5e4fb1db66ded401320, type: 2}
