@@ -23,12 +23,13 @@ public class RoomController : MonoBehaviour {
 
 	private bool keyPickedUp = false;
 
+	private float lastMove;
 
 	// Use this for initialization
 	void Start () {
 
 		player = (GameObject)Instantiate (playerObject, currentPosition * 0.25f, Quaternion.identity);
-
+		lastMove = Time.time;
 		loadLevel (levelNumber);
 
 	}
@@ -40,32 +41,33 @@ public class RoomController : MonoBehaviour {
 		float deltaX = 0;
 		float deltaY = 0;
 		
-		if (Input.GetKeyDown (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.UpArrow) && Time.time - lastMove > 0.25) {
 			if(currentPosition.y + 1 < 10 && !(tilePositions[(int)(currentPosition.x + (90 - (currentPosition.y + 1) * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaY += 1 * 0.25f;
 				currentPosition.y++;
+				lastMove = Time.time;
 
 			}
 		}
-		else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+		else if (Input.GetKey (KeyCode.DownArrow) && Time.time - lastMove > 0.25) {
 			if(currentPosition.y - 1 >= 0 && !(tilePositions[(int)(currentPosition.x + (90 - (currentPosition.y - 1) * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaY -= 1 * 0.25f;
 				currentPosition.y--;
-
+				lastMove = Time.time;
 			}
 		}
-		else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+		else if (Input.GetKey (KeyCode.RightArrow) && Time.time - lastMove > 0.25) {
 			if(currentPosition.x + 1 < 10 && !(tilePositions[(int)((currentPosition.x + 1) + (90 - currentPosition.y * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaX += 1 * 0.25f;
 				currentPosition.x++;
-
+				lastMove = Time.time;
 			}
 		}
-		else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+		else if (Input.GetKey (KeyCode.LeftArrow) && Time.time - lastMove > 0.25) {
 			if(currentPosition.x - 1 >= 0 && !(tilePositions[(int)((currentPosition.x - 1) + (90 - currentPosition.y * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaX -= 1 * 0.25f;
 				currentPosition.x--;
-
+				lastMove = Time.time;
 			}
 		}
 		if (player != null) {
@@ -75,13 +77,15 @@ public class RoomController : MonoBehaviour {
 				for (int i = 0; i < tilePositions.Length; i++) {
 					if (tilePositions [i].tag.Equals ("Door")) {
 						Vector2 tilePosition = tilePositions [i].transform.position;
-					
+
+						Destroy (tilePositions[i]);
 						tilePositions [i] = (GameObject)Instantiate (tiles [0], tilePosition, Quaternion.identity);
 					}
 				}
 			}
 			if (player.GetComponent<PlayerController> ().exitReached) {
-				levelNumber++;
+				Debug.Log (tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))]);
+				levelNumber = tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].GetComponent<Exit>().levelNumber;
 
 				this.loadLevel (levelNumber);
 			}

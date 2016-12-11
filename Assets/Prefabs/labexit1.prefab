@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 485786}
   - 212: {fileID: 21257128}
   - 61: {fileID: 6163714}
+  - 114: {fileID: 11400896}
   m_Layer: 0
   m_Name: labexit1
   m_TagString: Exit
@@ -42,6 +43,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .25, y: .25}
+--- !u!114 &11400896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 176488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e52295280967cd4ab87d091f8081033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNumber: 3
 --- !u!212 &21257128
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -88,6 +101,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: levelNumber
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

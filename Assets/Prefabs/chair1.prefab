@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 496542}
   - 212: {fileID: 21263902}
   - 61: {fileID: 6172152}
+  - 114: {fileID: 11491658}
   m_Layer: 0
   m_Name: chair1
   m_TagString: Exit
@@ -42,6 +43,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: .25, y: .25}
+--- !u!114 &11491658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e52295280967cd4ab87d091f8081033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelNumber: 2
 --- !u!212 &21263902
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -80,6 +93,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: levelNumber
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
