@@ -28,7 +28,10 @@ public class LevelText : MonoBehaviour {
 		"There are two cages... One with a dog, one a cat. It looks like whichever door you go through will kill its animal...",
 		"Maybe the answer was the start all along...",
 		"Maybe the answer was the start all along...",
-		"A sign on the wall reads, \"Go to the exit to leave the simulation. Congratulations.\""
+		"A sign on the wall reads, \"Go to the exit to leave the simulation. Congratulations.\"",
+		"",
+		"",
+		"To interact with something, it must meet two requirements... Be blue, and be under you..."
 	};
 
 	void Start () {
@@ -43,7 +46,7 @@ public class LevelText : MonoBehaviour {
 	void Update () {
 		if (levelNumber != roomController.levelNumber) {
 			levelNumber = roomController.levelNumber;
-			if(levelNumber <= 17)
+			if(levelNumber <= 17 || levelNumber >= 20)
 				text.text = levelTexts[levelNumber - 1];
 		}
 	}

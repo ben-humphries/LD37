@@ -218,6 +218,7 @@ MonoBehaviour:
     - {fileID: 186392, guid: c5ca592b9ed55734ab49e9496125a207, type: 2}
     - {fileID: 104156, guid: 16dc17f7783189743ae1b73f0589f68b, type: 2}
     - {fileID: 147916, guid: 78ab7bae22f19d741bb945940cd3f4e6, type: 2}
+    - {fileID: 118534, guid: 707e0c6e748a9dd40942287c714e00d7, type: 2}
     pickups:
     - {fileID: 169310, guid: 73392f2edccd75e40ab9007f9600ff2b, type: 2}
     tileMap: 
@@ -344,6 +345,30 @@ MonoBehaviour:
     - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
     - {fileID: 117036, guid: 6bf188414287eb946b6cb8fdbb476996, type: 2}
     - {fileID: 140210, guid: 76ae7e0960fc8de448c6b2f83bb12b3c, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 117036, guid: 6bf188414287eb946b6cb8fdbb476996, type: 2}
+    - {fileID: 140210, guid: 76ae7e0960fc8de448c6b2f83bb12b3c, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 117036, guid: 6bf188414287eb946b6cb8fdbb476996, type: 2}
+    - {fileID: 140210, guid: 76ae7e0960fc8de448c6b2f83bb12b3c, type: 2}
+    pickups: []
+    tileMap: 
+    pickupMap: 
+    startingPosition: {x: 0, y: 0}
+  - tiles:
+    - {fileID: 126832, guid: 8fe282747a37fb5438ec172b862f9c12, type: 2}
+    - {fileID: 176488, guid: 61d70198162d9b242a7f5eafc0966f9a, type: 2}
+    - {fileID: 148818, guid: 2b8af5bef62b16e43bd4dee392cbd4fd, type: 2}
     pickups: []
     tileMap: 
     pickupMap: 

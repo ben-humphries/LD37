@@ -28,6 +28,10 @@ public class RoomController : MonoBehaviour {
 	[HideInInspector]
 	public int conformityPoints;
 
+	private bool bluetile = false;
+	private bool dogcage = false;
+	private bool puddle1 = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -45,7 +49,7 @@ public class RoomController : MonoBehaviour {
 		float deltaX = 0;
 		float deltaY = 0;
 		
-		if (Input.GetKey (KeyCode.UpArrow) && Time.time - lastMove > 0.25) {
+		if (Input.GetKey (KeyCode.UpArrow) && Time.time - lastMove > 0.15) {
 			if(currentPosition.y + 1 < 10 && !(tilePositions[(int)(currentPosition.x + (90 - (currentPosition.y + 1) * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaY += 1 * 0.25f;
 				currentPosition.y++;
@@ -53,25 +57,36 @@ public class RoomController : MonoBehaviour {
 
 			}
 		}
-		else if (Input.GetKey (KeyCode.DownArrow) && Time.time - lastMove > 0.25) {
+		else if (Input.GetKey (KeyCode.DownArrow) && Time.time - lastMove > 0.15) {
 			if(currentPosition.y - 1 >= 0 && !(tilePositions[(int)(currentPosition.x + (90 - (currentPosition.y - 1) * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaY -= 1 * 0.25f;
 				currentPosition.y--;
 				lastMove = Time.time;
 			}
 		}
-		else if (Input.GetKey (KeyCode.RightArrow) && Time.time - lastMove > 0.25) {
+		else if (Input.GetKey (KeyCode.RightArrow) && Time.time - lastMove > 0.15) {
 			if(currentPosition.x + 1 < 10 && !(tilePositions[(int)((currentPosition.x + 1) + (90 - currentPosition.y * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaX += 1 * 0.25f;
 				currentPosition.x++;
 				lastMove = Time.time;
 			}
 		}
-		else if (Input.GetKey (KeyCode.LeftArrow) && Time.time - lastMove > 0.25) {
+		else if (Input.GetKey (KeyCode.LeftArrow) && Time.time - lastMove > 0.15) {
 			if(currentPosition.x - 1 >= 0 && !(tilePositions[(int)((currentPosition.x - 1) + (90 - currentPosition.y * 10))].layer == LayerMask.NameToLayer("Collision"))){
 				deltaX -= 1 * 0.25f;
 				currentPosition.x--;
 				lastMove = Time.time;
+			}
+		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if(tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].tag.Equals ("Blue")){
+				if(tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].name.Equals ("bluetile(Clone)")){
+					bluetile = true;
+				}else if(tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].name.Equals ("dogcage(Clone)")){
+					dogcage = true;
+				}else if(tilePositions[(int)(currentPosition.x + (90 - currentPosition.y * 10))].name.Equals ("puddle1(Clone)")){
+					puddle1 = true;
+				}
 			}
 		}
 		if (player != null) {
@@ -147,6 +162,11 @@ public class RoomController : MonoBehaviour {
 				}
 				else{
 					PlayerPrefs.SetInt ("conformityPoints", conformityPoints);
+					if(bluetile && puddle1 && dogcage)
+						PlayerPrefs.SetInt("Blue", 1);
+					else {
+						PlayerPrefs.SetInt ("Blue", 0);
+					}
 					Application.LoadLevel ("EndCinematic");
 				}
 			}
